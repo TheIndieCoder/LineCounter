@@ -1,0 +1,28 @@
+# Special chars :
+# 		START_LINE 		: Defining type of line
+#		END_LINE		: End of line type
+#		START			: Start of any thing mentioned in the scope
+#		END 			: End of any thing mentioned in the scope
+#		CHAR 			: Any Character 
+#		ACHAR 			: Alphabet character (only ABC..Z and abc..z) 
+#		ANY				: Could be any number of char in between 
+#						  eg:- A ANY D could be ABCD or AD or AOD 
+
+START LINE PREPROCESSOR_DEF
+	LINE_START 		#
+	LINE_END 		NEW_LINE
+	NEXT_LINE 	TRUE
+		INDICATOR 	/
+END 
+
+START LINE GEN_FUNCTION
+	LINE_START 		ACHAR ANY (
+	LINE_END 		)
+	NEXT_LINE	TRUE
+END 
+
+START LINE LOGICAL_LINE_OF_CODE
+	LINE_START 		ACHAR
+	LINE_END 		;
+	NEXT_LINE 	TRUE
+END 
