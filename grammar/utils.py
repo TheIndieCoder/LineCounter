@@ -7,6 +7,7 @@ class utils:
         match_ret = re.match("^#", strline)
         return True if match_ret else False
 
+    @staticmethod
     def FineLineByPattern(strPattern = "", line_list = []):
         matched_line = ""
         for line in line_list:
@@ -40,8 +41,8 @@ class utils:
                     end_ret = re.match("^END", line)
                     if(end_ret):
                         traversal_status = False
-                        grammer_list.append(block.copy())
-                        block.clear()
+                        grammer_list.append(list(block))
+                        del block[:]
 
         return grammer_list
 

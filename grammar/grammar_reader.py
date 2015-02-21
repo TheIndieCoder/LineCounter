@@ -5,6 +5,7 @@ class e_block_type:
     NONE = 0
     LINE = 1
 
+    @staticmethod
     def GetType(val=str()):
         return {'NONE' : e_block_type.NONE,
                 'LINE' : e_block_type.LINE
