@@ -17,8 +17,15 @@ class utils:
                 break
         return matched_line
 
-    def GetRegexFromLine():
-        pass
+    @staticmethod
+    def GenerateRegexFromLine(strLine = str()):
+        strRegex = str()
+        strLineSplit = strLine.split()
+        if strLineSplit[0] == 'LINE_START':
+            strRegex = '^' + strLineSplit[1]
+        else:
+            strRegex = strLine
+        return strRegex
 
     @staticmethod
     def GetGrammerBlocks(filehandle):

@@ -58,8 +58,9 @@ class grammar_block:
         line_end = utils.utils.FineLineByPattern("^\tLINE_END", block[1:(self.block_length-1)])
         next_line = utils.utils.FineLineByPattern("^\tNEXT_LINE", block[1:(self.block_length-1)])
         indicator = utils.utils.FineLineByPattern("^\t\tINDICATOR", block[1:(self.block_length-1)])
-        print("naba here")
-        print(line_start.split()[1])
+
+        line_start_regex = utils.utils.GenerateRegexFromLine(line_start)
+        print(line_start_regex)
 
     def ReadEnd(self, block):
         pass
