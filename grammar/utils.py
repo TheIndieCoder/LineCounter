@@ -18,16 +18,6 @@ class utils:
         return matched_line
 
     @staticmethod
-    def GenerateRegexFromLine(strLine = str()):
-        strRegex = str()
-        strLineSplit = strLine.split()
-        if strLineSplit[0] == 'LINE_START':
-            strRegex = '^' + strLineSplit[1]
-        else:
-            strRegex = strLine
-        return strRegex
-
-    @staticmethod
     def GetGrammerBlocks(filehandle):
         grammer_list = []
         traversal_status = False

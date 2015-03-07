@@ -1,5 +1,6 @@
 import re
 import utils
+import token_master
 
 class e_block_type:
     NONE = 0
@@ -28,9 +29,10 @@ class grammar_block:
     def __init__(self):
         self.block_type = e_block_type.NONE
         self.block_sub_type = e_subblock_type.NONE
-        self.start_indicator = ""
-        self.end_indicator = ""
-        self.has_next_line = False
+        self.start_regex = ""
+        self.end_regex = ""
+        self.has_next_line = True
+        self.next_line_indicator = ''
         self.block_length = -1
 
     def Read(self, block_str = str()):
@@ -59,8 +61,15 @@ class grammar_block:
         next_line = utils.utils.FineLineByPattern("^\tNEXT_LINE", block[1:(self.block_length-1)])
         indicator = utils.utils.FineLineByPattern("^\t\tINDICATOR", block[1:(self.block_length-1)])
 
-        line_start_regex = utils.utils.GenerateRegexFromLine(line_start)
-        print(line_start_regex)
+        indicator_split = indicator.split()
+
+        if len(indicator_split) == 2:
+            self.next_line_indicator = indicator_split[1]
+
+        print(self.next_line_indicator)
+
+        self.start_regex = token_master.token_interpreter.GenerateRegex(line_start)
+        self.end_regex = token_master.token_interpreter.GenerateRegex(line_end)
 
     def ReadEnd(self, block):
         pass
