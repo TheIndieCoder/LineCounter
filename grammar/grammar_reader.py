@@ -66,8 +66,6 @@ class grammar_block:
         if len(indicator_split) == 2:
             self.next_line_indicator = indicator_split[1]
 
-        print(self.next_line_indicator)
-
         self.start_regex = token_master.token_interpreter.GenerateRegex(line_start)
         self.end_regex = token_master.token_interpreter.GenerateRegex(line_end)
 
@@ -79,11 +77,14 @@ class grammar_reader:
         self.grammar_block_lst = list()
         self.filepath = filepath
         self.str_block_list = list()
+        self.grammar_block_lst = list()
 
     def Read(self):
         grammar_file = open(self.filepath)
         self.str_block_list = utils.utils.GetGrammerBlocks(grammar_file)
         self.RetrieveFormats()
+
+        print(str(len(self.grammar_block_lst)) + ' number of grammars collected')
 
     def RetrieveFormats(self):
         for block_str in self.str_block_list:
